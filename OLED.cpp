@@ -179,7 +179,7 @@ const unsigned char plus [] = {
 };
 
 
-const unsigned char dmrplus [] = {
+const unsigned char plus_B [] = {
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 0x00, 0x00, 0x00, 0x00, 0x00, 0x07, 0xFF, 0xFF, 0xFF, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -532,6 +532,145 @@ else if (m_duplex==0U)
       display.setTextSize(2);
       display.printf("%s %s",type,src.c_str());
 
+// Voice for people
+
+	char voice[80];
+	strcpy (voice,"echo \"");
+		if (strcmp ("EA5SW",src.c_str()) !=0){ 
+
+		std::string s =src.c_str();
+
+for (char & c : s)
+		{
+		if (c == 'A'){
+		strcat(voice," Alfa ");
+	}
+	else if (c == 'B'){
+		strcat(voice," Bravo ");
+	}
+	else if (c == 'C'){
+		strcat(voice," Charli ");
+	}
+	else if (c == 'D'){
+		strcat(voice," Delta ");
+	}
+	else if (c == 'E'){
+		strcat(voice," Eko ");
+	}
+	else if (c == 'F'){
+		strcat(voice," Foxtrot ");
+	}
+	else if (c == 'G'){
+		strcat(voice," Golf ");
+	}
+	else if (c == 'H'){
+		strcat(voice," Hotel ");
+	}
+	else if (c == 'I'){
+		strcat(voice," India ");
+	}
+	else if (c == 'J'){
+		strcat(voice," Yuliet ");
+	}
+	else if (c == 'K'){
+		strcat(voice," Kilo ");
+	}
+	else if (c == 'L'){
+		strcat(voice," Lima ");
+	}	
+	else if (c == 'M'){
+		strcat(voice," Maik ");
+	}
+	else if (c == 'N'){
+		strcat(voice," November ");
+	}
+	else if (c == 'O'){
+		strcat(voice," Oscar ");
+	}
+	else if (c == 'P'){
+		strcat(voice," Papa ");
+	}
+	else if (c == 'Q'){
+		strcat(voice," Quebec ");
+	}
+	else if (c == 'R'){
+		strcat(voice," Romeo ");
+	}
+	else if (c == 'S'){
+		strcat(voice," Sierra ");
+	}
+	else if (c == 'T'){
+		strcat(voice," Tango ");
+	}
+	else if (c == 'U'){
+		strcat(voice," Union ");
+	}
+	else if (c == 'V'){
+		strcat(voice," Victor ");
+	}
+	else if (c == 'W'){
+		strcat(voice," Guisky ");
+	}
+	else if (c == 'X'){
+		strcat(voice," Exray ");
+	}
+	else if (c == 'Y'){
+		strcat(voice," Yanki ");
+	}
+	else if (c == 'Z'){
+		strcat(voice," Zulu ");
+	}
+	else if (c == '0'){
+		strcat(voice," 0 ");
+	}
+	else if (c == '1'){
+		strcat(voice," 1 ");
+	}
+	else if (c == '2'){
+		strcat(voice," 2 ");
+	}
+	else if (c == '3'){
+		strcat(voice," 3 ");
+	}
+	else if (c == '4'){
+		strcat(voice," 4 ");
+	}
+	else if (c == '5'){
+		strcat(voice," 5 ");
+	}
+	else if (c == '6'){
+		strcat(voice," 6 ");
+	}
+	else if (c == '7'){
+		strcat(voice," 7 ");
+	}
+	else if (c == '8'){
+		strcat(voice," 8 ");
+	}
+	else if (c == '9'){
+		strcat(voice," 9 ");
+	}
+
+    c = '*';
+}
+
+
+// strcat (voice,src.c_str());
+	strcat (voice,"\"| festival --tts\n");
+//strcat (voice,"\n");
+//printf ("%s\n",voice);
+
+	FILE *fpa;
+ 	fpa = fopen ( "/ram/mm_voice.sh", "r+" );
+ 	fprintf (fpa,voice);
+ 	fclose ( fpa );
+	
+	system ("/ram/mm_voice.sh &");
+	}
+
+
+
+
 // TG 
 
 if (strcmp ("8",dst.c_str())!=0 || strcmp ("6",dst.c_str()) !=0 || strcmp ("9",dst.c_str())!=0|| strcmp ("9990",dst.c_str())!=0 || strcmp ("4000",dst.c_str())!=0 ){
@@ -581,6 +720,7 @@ if (strcmp ("8",dst.c_str()) ==0) {
 
 
 // ShutDown & Reboot compares
+
 
 if ((strcmp ("99999",dst.c_str()) ==0))
 {
@@ -650,14 +790,36 @@ else if ((strcmp ("99995",dst.c_str()) ==0))
     printf ("BrandMeister\n");
     system("mm_BM");
     delay (100);
-
 }
+else if ((strcmp ("99990",dst.c_str()) ==0))
+{
+    display.clearDisplay();
+    OLED_statusbar();
+    display.setCursor(20,OLED_LINE3);
+    display.setTextSize(2);
+    display.printf("Wifi Off");
+    display.display();
+    printf ("Wifi Off\n");
+    system("sudo rfkill block 0");
+    }
 
-}
+else if ((strcmp ("99991",dst.c_str()) ==0))
+{
+    display.clearDisplay();
+    OLED_statusbar();
+    display.setCursor(20,OLED_LINE3);
+    display.setTextSize(2);
+    display.printf("Wifi On");
+    display.display();
+    printf ("Wifi On\n");
+    system("sudo rfkill unblock 0");
+ }
+
+
 //    OLED_statusbar();
     display.display();
 }
-
+}
 
 void COLED::writeDMRTAInt(unsigned int slotNo,  unsigned char* talkerAlias, const char* type)
 
@@ -857,7 +1019,7 @@ if (m_mode == MODE_DMR && m_duplex== 0U){
 ;
 }
 // DmrPlus LOGO
-//      display.drawBitmap(0, 0, dmrplus, 128, 32, WHITE);
+//      display.drawBitmap(0, 0, plus_B, 128, 32, WHITE);
 
 // XLX LOGO 
 //   display.drawBitmap(0, 0, XLX_B, 128, 26, WHITE);
