@@ -26,6 +26,8 @@ Code also have a small remote command to shutdown,reboot and change modes of ope
 9997 Send mm_plus command to start a new MMDDVMHost in dmrplus mode (mm_plus is an script file)
 9996 Send mm_gate command to start a new MMDDVMHost in DMRGateway mode (mm_gate is an script file)
 9995 Send mm_BM command to start a new MMDDVMHost in BrandMeister mode (mm_BM is an script file)
+9990 Put Wifi OFF
+9991 Put Wifi ON
 
 
 New TTS (Text To Speech) callsigns via Festival
