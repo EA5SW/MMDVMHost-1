@@ -630,7 +630,7 @@ for (char & c : s)
 		strcat(voice," 2 ");
 	}
 	else if (c == '3'){
-		strcat(voice," 3 ");
+		strcat(voice," tress ");
 	}
 	else if (c == '4'){
 		strcat(voice," 4 ");
