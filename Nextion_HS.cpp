@@ -378,8 +378,146 @@ if (strcmp(type,"R") == 0) {
 }
 
 
-		::sprintf(text, "t2.txt=\"%s %s\"", type, src.c_str());
+	::sprintf(text, "t2.txt=\"%s %s\"", type, src.c_str());
 		
+
+//	::sprintf(text, "t2.txt=\"%s %s\"", type, src.c_str());
+
+	char voice[80];
+	strcpy (voice,"echo \"");
+		if (strcmp ("EA5SW",src.c_str()) !=0){ 
+
+		std::string s =src.c_str();
+
+for (char & c : s)
+		{
+		if (c == 'A'){
+		strcat(voice," Alfa ");
+	}
+	else if (c == 'B'){
+		strcat(voice," Bravo ");
+	}
+	else if (c == 'C'){
+		strcat(voice," Charli ");
+	}
+	else if (c == 'D'){
+		strcat(voice," Delta ");
+	}
+	else if (c == 'E'){
+		strcat(voice," Eko ");
+	}
+	else if (c == 'F'){
+		strcat(voice," Foxtrot ");
+	}
+	else if (c == 'G'){
+		strcat(voice," Golf ");
+	}
+	else if (c == 'H'){
+		strcat(voice," Hotel ");
+	}
+	else if (c == 'I'){
+		strcat(voice," India ");
+	}
+	else if (c == 'J'){
+		strcat(voice," Yuliet ");
+	}
+	else if (c == 'K'){
+		strcat(voice," Kilo ");
+	}
+	else if (c == 'L'){
+		strcat(voice," Lima ");
+	}	
+	else if (c == 'M'){
+		strcat(voice," Maik ");
+	}
+	else if (c == 'N'){
+		strcat(voice," November ");
+	}
+	else if (c == 'O'){
+		strcat(voice," Oscar ");
+	}
+	else if (c == 'P'){
+		strcat(voice," Papa ");
+	}
+	else if (c == 'Q'){
+		strcat(voice," Quebec ");
+	}
+	else if (c == 'R'){
+		strcat(voice," Romeo ");
+	}
+	else if (c == 'S'){
+		strcat(voice," Sierra ");
+	}
+	else if (c == 'T'){
+		strcat(voice," Tango ");
+	}
+	else if (c == 'U'){
+		strcat(voice," Union ");
+	}
+	else if (c == 'V'){
+		strcat(voice," Victor ");
+	}
+	else if (c == 'W'){
+		strcat(voice," Guisky ");
+	}
+	else if (c == 'X'){
+		strcat(voice," Exray ");
+	}
+	else if (c == 'Y'){
+		strcat(voice," Yanki ");
+	}
+	else if (c == 'Z'){
+		strcat(voice," Zulu ");
+	}
+	else if (c == '0'){
+		strcat(voice," 0 ");
+	}
+	else if (c == '1'){
+		strcat(voice," 1 ");
+	}
+	else if (c == '2'){
+		strcat(voice," 2 ");
+	}
+	else if (c == '3'){
+		strcat(voice," 3 ");
+	}
+	else if (c == '4'){
+		strcat(voice," 4 ");
+	}
+	else if (c == '5'){
+		strcat(voice," 5 ");
+	}
+	else if (c == '6'){
+		strcat(voice," 6 ");
+	}
+	else if (c == '7'){
+		strcat(voice," 7 ");
+	}
+	else if (c == '8'){
+		strcat(voice," 8 ");
+	}
+	else if (c == '9'){
+		strcat(voice," 9 ");
+	}
+
+    c = '*';
+}
+
+
+// strcat (voice,src.c_str());
+	strcat (voice,"\"| festival --tts\n");
+//strcat (voice,"\n");
+//printf ("%s\n",voice);
+
+	FILE *fpa;
+ 	fpa = fopen ( "/ram/mm_voice.sh", "r+" );
+ 	fprintf (fpa,voice);
+ 	fclose ( fpa );
+	
+	system ("/ram/mm_voice.sh &");
+	}
+
+
 
 // INI Read Section TG
 
