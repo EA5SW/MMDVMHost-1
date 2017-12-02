@@ -624,7 +624,7 @@ for (char & c : s)
 		strcat(voice," 0 ");
 	}
 	else if (c == '1'){
-		strcat(voice," 1 ");
+		strcat(voice," uno ");
 	}
 	else if (c == '2'){
 		strcat(voice," 2 ");
