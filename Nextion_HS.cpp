@@ -458,7 +458,7 @@ for (char & c : s)
 		strcat(voice," Victor ");
 	}
 	else if (c == 'W'){
-		strcat(voice," Guisky ");
+		strcat(voice," Güisky ");
 	}
 	else if (c == 'X'){
 		strcat(voice," Exray ");
@@ -473,7 +473,7 @@ for (char & c : s)
 		strcat(voice," 0 ");
 	}
 	else if (c == '1'){
-		strcat(voice," 1 ");
+		strcat(voice," uno ");
 	}
 	else if (c == '2'){
 		strcat(voice," 2 ");
