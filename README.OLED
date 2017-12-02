@@ -27,4 +27,45 @@ Code also have a small remote command to shutdown,reboot and change modes of ope
 9996 Send mm_gate command to start a new MMDDVMHost in DMRGateway mode (mm_gate is an script file)
 9995 Send mm_BM command to start a new MMDDVMHost in BrandMeister mode (mm_BM is an script file)
 
+
+New TTS (Text To Speech) callsigns via Festival
+
+Installation in Raspberry Pi:
+
+sudo apt-get install festival
+
+Default voices are english, if you want spanish voices install packages for Guadalinex:
+https://github.com/guadalinex-archive/hispavoces
+
+wget https://github.com/guadalinex-archive/hispavoces/raw/master/packages/festvox-palpc16k_1.0.0_all.deb
+wget https://github.com/guadalinex-archive/hispavoces/raw/master/packages/festvox-sflpc16k_1.0.0_all.deb
+
+sudo dkpg -i festvox-sflpc16k_1.0.0_all.deb
+sudo dkpg -i festvox-palpc16k_1.0.0_all.deb
+
+edit festival.scm and put last line prefered voice:
+
+sudo nano /etc/festival.scm
+;;(set! voice_default 'voice_JuntaDeAndalucia_es_sf_diphone)
+(set! voice_default 'voice_JuntaDeAndalucia_es_pa_diphone)
+
+Edit OLED.cpp before compile and change your own callsign and phonetic of voices:
+
+Line 539		if (strcmp ("EA5SW",src.c_str()) !=0){ 
+
+The phonetic in spanish changed, for example, Mike in spanish are best "Maik"
+
+Line 581    else if (c == 'M'){
+Line 582    strcat(voice," Maik ");
+
+
+I put all operations in RAMDISK,create a simple bash to execute before MMDVMHost
+
+#!/bin/bash
+sudo mkdir -p /ram
+sudo mount -t tmpfs -o size=120k tmpfs /ram
+sudo touch /ram/mm_voice.sh
+sudo chmod 777 /ram/mm_voice.sh
+
+
 73 & DX EA5SW Jose
